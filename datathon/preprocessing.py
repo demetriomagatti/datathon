@@ -4,7 +4,7 @@ from tqdm.auto import tqdm
 
 def translate_column(df, column_name, new_column_name, from_lang='nl', to_lang='en'):
     '''
-    Add a column wit translated text to pandas.DataFrame. 
+    Add a column with translated text to pandas.DataFrame. 
     Works google translator version 4.0.0rci (pip install googletrans==4.0.0rc1).
 
     Arguments:
