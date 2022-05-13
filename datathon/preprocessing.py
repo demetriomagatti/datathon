@@ -2,7 +2,7 @@ import googletrans as gtrans
 from tqdm.auto import tqdm
 
 # Translating text columns to english
-# works google translator version 4.0.0rci
+# works with google translator version 4.0.0rci
 # installable via following command
 #       pip install googletrans==4.0.0rc1
 
@@ -18,6 +18,6 @@ def translate_column(df, column_name, new_column_name, from_lang='nl', to_lang='
         translated_texts.append(nl_to_eng.translate(text_element,src=from_lang, dest=to_lang).text)
 
     for i in tqdm(range(0,len(original_texts))):
-        df.loc[df[new_column_name]==original_texts[i],'trans_origin'] = translated_texts[i]
+        df.loc[df[new_column_name]==original_texts[i], new_column_name] = translated_texts[i]
 
     return df
