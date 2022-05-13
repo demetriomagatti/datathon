@@ -1,12 +1,19 @@
 import googletrans as gtrans
 from tqdm.auto import tqdm
 
-# Translating text columns to english
-# works with google translator version 4.0.0rci
-# installable via following command
-#       pip install googletrans==4.0.0rc1
 
 def translate_column(df, column_name, new_column_name, from_lang='nl', to_lang='en'):
+    '''
+    Add a column wit translated text to pandas.DataFrame. 
+    Works google translator version 4.0.0rci (pip install googletrans==4.0.0rc1).
+
+    Arguments:
+        df [pandas.DataFrame]
+        column_name [str]: column with to-be-translated text
+        new_column_name [str]: column to store translated text
+        from_lang [str]: to-be-translated text language
+        to_lang [str]: target language
+    '''
     nl_to_eng = gtrans.Translator()
     df[new_column_name] = df[column_name].fillna('Missing').astype('str')
 
