@@ -28,3 +28,17 @@ def translate_column(df, column_name, new_column_name, from_lang='nl', to_lang='
         df.loc[df[new_column_name]==original_texts[i], new_column_name] = translated_texts[i]
 
     return df
+
+
+def make_table(df, column_names):
+    '''
+    Returns DataFrame with structure similar to R _table_ function.
+
+    Arguments:
+        df [pandas.DataFrame]: input DataFrame
+        column_names [str]: ordered list of columns for group splitting
+    '''
+    table = df.groupby(column_names).size().to_frame('size')
+    return table
+
+
