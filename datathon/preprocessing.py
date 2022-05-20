@@ -30,7 +30,7 @@ def translate_column(df, column_name, new_column_name, from_lang='nl', to_lang='
     return df
 
 
-def make_table(df, column_names):
+def make_table(df, column_names, MultiIndex=False):
     '''
     Returns DataFrame with structure similar to R _table_ function.
 
@@ -39,6 +39,9 @@ def make_table(df, column_names):
         column_names [str]: ordered list of columns for group splitting
     '''
     table = df.groupby(column_names).size().to_frame('size')
+    if not MultiIndex:
+        levels = list(np.arange(len(column_names)))
+        table = table.reset_index(level=levels)
     return table
 
 
