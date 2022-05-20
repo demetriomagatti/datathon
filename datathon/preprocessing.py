@@ -1,4 +1,5 @@
 import googletrans as gtrans
+import numpy as np
 from tqdm.auto import tqdm
 
 
